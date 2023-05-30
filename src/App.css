@@ -13,6 +13,7 @@
   --gray: gray;
   --padding-left-right: 32px;
   --padding-block: 16px;
+  --list-left-margin: 16px;
 }
 
 .App {
@@ -59,6 +60,7 @@
   padding-inline: var(--padding-left-right);
   padding-block: var(--padding-block);
   position: relative;
+  line-height: 1.5;
 }
 
 .NavSection::before,
@@ -79,9 +81,6 @@ h1 {
   margin-block: var(--padding-block);
 }
 
-.Profile {
-}
-
 .phone,
 .email {
   display: flex;
@@ -92,4 +91,8 @@ h1 {
 .email img {
   width: 20px;
   margin-right: 8px;
+}
+
+.Profile ul {
+  margin-left: var(--list-left-margin);
 }
