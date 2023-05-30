@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark: hsl(0deg 0% 10.2%);
+  --cyan: (165.26deg 57.58% 61.18%);
+  --white: white;
+}
+
+.App {
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.Photo {
+  background-color: var(--dark);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Photo img {
+  width: 60%;
+  border-radius: 50%;
+  border: 5px solid var(--white);
+}
