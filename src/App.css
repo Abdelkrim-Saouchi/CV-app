@@ -97,7 +97,8 @@ h1 {
 }
 
 .Profile ul,
-.Experience ul {
+.Experience ul,
+.Education ul {
   margin-left: var(--list-left-margin);
 }
 
@@ -117,7 +118,8 @@ h2 {
   margin-bottom: 10px;
 }
 
-.Experience img {
+.Experience img,
+.Education img {
   width: 16px;
   margin-right: 4px;
 }
