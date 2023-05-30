@@ -8,28 +8,67 @@
 
 :root {
   --dark: hsl(0deg 0% 10.2%);
-  --cyan: (165.26deg 57.58% 61.18%);
+  --cyan: hsl(166, 86%, 51%);
   --white: white;
+  --gray: gray;
+  --padding-left-right: 32px;
+  --padding-block: 16px;
 }
 
 .App {
   min-height: 100dvh;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 2fr 4fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: repeat(4, 1fr);
 }
 
-.Photo {
+.Photo,
+.NavSection {
   background-color: var(--dark);
   color: var(--cyan);
+  padding-inline: var(--padding-left-right);
+  padding-block: var(--padding-block);
+}
+
+.Photo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .Photo img {
-  width: 60%;
+  width: 80%;
   border-radius: 50%;
   border: 5px solid var(--white);
+  margin-block: 16px;
+}
+
+.NavSection {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  position: relative;
+}
+
+.GeneralInfo,
+.Experience,
+.Profile,
+.Education {
+  padding-inline: var(--padding-left-right);
+  padding-block: var(--padding-block);
+  position: relative;
+}
+
+.NavSection::before,
+.Experience::before,
+.Profile::before,
+.Education::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80%;
+  height: 2px;
+  background-color: var(--gray);
+  opacity: 0.7;
 }
