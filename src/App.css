@@ -83,6 +83,7 @@ body {
   height: 2px;
   background-color: var(--gray);
   opacity: 0.7;
+  z-index: -1;
 }
 
 .NavSection::before {
@@ -123,13 +124,15 @@ h1 {
   align-items: center;
 }
 
-.GeneralInfo button.edit_btn {
+.edit_btn {
   position: absolute;
-  top: 0;
+  top: 16px;
   right: 0;
+  cursor: pointer;
 }
 
-.generalInfo_form {
+.generalInfo_form,
+.Profile_form {
   width: 400px;
   background-color: var(--dark);
   color: var(--cyan);
@@ -151,9 +154,12 @@ h1 {
   gap: 12px;
 }
 
-.generalInfo_form label input {
+.generalInfo_form label input,
+.Profile_form input {
   width: 70%;
+  height: 30px;
   padding-inline: 8px;
+  z-index: 99;
 }
 
 .generalInfo_form button {
@@ -163,6 +169,7 @@ h1 {
   background-color: var(--cyan);
   color: var(--dark);
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .generalInfo_form button:is(:hover, :focus) {
