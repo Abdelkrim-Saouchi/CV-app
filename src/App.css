@@ -83,7 +83,6 @@ body {
   height: 2px;
   background-color: var(--gray);
   opacity: 0.7;
-  z-index: -1;
 }
 
 .NavSection::before {
@@ -140,29 +139,32 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: var(--padding-block);
   border-radius: 12px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 99;
 }
-.generalInfo_form label {
-  width: 90%;
-  height: 24px;
+.generalInfo_form label,
+.Profile_form .input_container {
+  width: 100%;
+  height: 30px;
   display: flex;
   gap: 12px;
 }
 
 .generalInfo_form label input,
 .Profile_form input {
-  width: 70%;
+  width: 100%;
   height: 30px;
   padding-inline: 8px;
-  z-index: 99;
 }
 
-.generalInfo_form button {
+.generalInfo_form button,
+.Profile_form button {
   border: 0;
   outline: transparent;
   padding: 8px;
@@ -182,9 +184,11 @@ h2 {
 }
 
 .Experience img,
-.Education img {
+.Education img,
+.Profile img {
   width: 16px;
   margin-right: 4px;
+  cursor: pointer;
 }
 
 .hidden {
