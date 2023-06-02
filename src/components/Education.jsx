@@ -12,7 +12,10 @@ export default class Education extends Component {
           id: uniqid(),
           pathName: 'Doctor Degree',
           place: 'Super University',
-          period: '2010-2015',
+          period: {
+            from: '2010',
+            to: '2015',
+          },
           tasks: [
             {
               id: uniqid(),
@@ -35,7 +38,10 @@ export default class Education extends Component {
           id: uniqid(),
           pathName: 'Master Degree',
           place: 'Very Good University',
-          period: '2005-2010',
+          period: {
+            from: '2005',
+            to: '2010',
+          },
           tasks: [
             {
               id: uniqid(),

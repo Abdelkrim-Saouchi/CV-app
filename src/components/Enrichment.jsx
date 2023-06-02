@@ -12,7 +12,7 @@ export default class Enrichment extends Component {
         <div className="enrich_info">
           <div className="period">
             <img src={timeIcon} alt="period icon" />
-            {path.period}
+            {path.period.from}-{path.period.to}
           </div>
           {children}
         </div>

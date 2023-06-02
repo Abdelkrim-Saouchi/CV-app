@@ -19,7 +19,6 @@ export default class GeneralInfo extends Component {
   }
 
   setFormDisplay() {
-    console.log('entred');
     this.setState({
       formClassName:
         this.state.formClassName === 'form generalInfo_form hidden'
