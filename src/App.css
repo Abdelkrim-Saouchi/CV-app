@@ -143,9 +143,9 @@ h1 {
   gap: var(--padding-block);
   border-radius: 12px;
   position: absolute;
-  top: 50%;
+  top: 110%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 99;
 }
 .generalInfo_form label,

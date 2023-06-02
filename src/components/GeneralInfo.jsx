@@ -73,6 +73,7 @@ export default class GeneralInfo extends Component {
         </button>
 
         <form className={this.state.formClassName}>
+          <p className="form_title">Edit General info</p>
           <label htmlFor="nameInput">
             Name:
             <input

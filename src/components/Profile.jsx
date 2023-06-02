@@ -21,7 +21,7 @@ export default class Profile extends Component {
           text: 'Lorm ipsum dolor sit amet consectetur, adipisicing elit. Dolor reiciendis aut incidunt porro adipisci delectus?',
         },
       ],
-      formClassName: 'Profile_form',
+      formClassName: 'Profile_form hidden',
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.addProfileItem = this.addProfileItem.bind(this);
