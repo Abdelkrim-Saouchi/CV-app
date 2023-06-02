@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import uniqid from 'uniqid';
 import deleteIcon from '../delete-2-svgrepo-com.svg';
 import addIcon from '../add-plus-square-svgrepo-com.svg';
+import Form from './Form';
+import EditBtn from './EditBtn';
 
 export default class Profile extends Component {
   constructor() {
@@ -69,9 +71,9 @@ export default class Profile extends Component {
   setFormDisplay() {
     this.setState({
       formClassName:
-        this.state.formClassName === 'Profile_form hidden'
-          ? 'Profile_form'
-          : 'Profile_form hidden',
+        this.state.formClassName === 'form Profile_form hidden'
+          ? 'form Profile_form'
+          : 'form Profile_form hidden',
     });
   }
 
@@ -82,12 +84,13 @@ export default class Profile extends Component {
     return (
       <div className="Profile">
         <ul>{profileList}</ul>
-        <button className="edit_btn" onClick={this.setFormDisplay}>
-          Edit
-        </button>
+        <EditBtn formDisplayHandler={this.setFormDisplay} />
 
-        <form className={this.state.formClassName}>
-          <p className="form_title">Edit Profile</p>
+        <Form
+          className={this.state.formClassName}
+          title="Edit Profile"
+          formDisplayHandler={this.setFormDisplay}
+        >
           {this.state.profileList.map((element, index) => {
             return (
               <div key={element.id} className="input_container">
@@ -108,10 +111,7 @@ export default class Profile extends Component {
             <input id="add_input" />
             <img src={addIcon} alt="add icon" onClick={this.addProfileItem} />
           </div>
-          <button type="button" onClick={this.setFormDisplay}>
-            Close
-          </button>
-        </form>
+        </Form>
       </div>
     );
   }

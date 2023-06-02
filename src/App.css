@@ -101,9 +101,11 @@ h1 {
 }
 
 .phone img,
-.email img {
+.email img,
+.Profile img {
   width: 20px;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .Profile ul,
@@ -130,8 +132,7 @@ h1 {
   cursor: pointer;
 }
 
-.generalInfo_form,
-.Profile_form {
+.form {
   width: 400px;
   background-color: var(--dark);
   color: var(--cyan);
@@ -148,23 +149,21 @@ h1 {
   transform: translateX(-50%);
   z-index: 99;
 }
-.generalInfo_form label,
-.Profile_form .input_container {
+.form label,
+.form .input_container {
   width: 100%;
   height: 30px;
   display: flex;
   gap: 12px;
 }
 
-.generalInfo_form label input,
-.Profile_form input {
+.form input {
   width: 100%;
   height: 30px;
   padding-inline: 8px;
 }
 
-.generalInfo_form button,
-.Profile_form button {
+.form button {
   border: 0;
   outline: transparent;
   padding: 8px;
@@ -174,7 +173,7 @@ h1 {
   cursor: pointer;
 }
 
-.generalInfo_form button:is(:hover, :focus) {
+.form button:is(:hover, :focus) {
   opacity: 0.7;
 }
 
@@ -184,8 +183,7 @@ h2 {
 }
 
 .Experience img,
-.Education img,
-.Profile img {
+.Education img {
   width: 16px;
   margin-right: 4px;
   cursor: pointer;

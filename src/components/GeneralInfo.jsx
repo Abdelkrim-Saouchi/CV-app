@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import phoneIcon from '../phone-rotary-svgrepo-com.svg';
 import emailIcon from '../email-svgrepo-com.svg';
+import Form from './Form';
+import EditBtn from './EditBtn';
 
 export default class GeneralInfo extends Component {
   constructor() {
@@ -11,17 +13,18 @@ export default class GeneralInfo extends Component {
         phone: '124-333-200',
         email: 'example@gmail.com',
       },
-      formClassName: 'generalInfo_form hidden',
+      formClassName: 'form generalInfo_form hidden',
     };
     this.setFormDisplay = this.setFormDisplay.bind(this);
   }
 
   setFormDisplay() {
+    console.log('entred');
     this.setState({
       formClassName:
-        this.state.formClassName === 'generalInfo_form hidden'
-          ? 'generalInfo_form'
-          : 'generalInfo_form hidden',
+        this.state.formClassName === 'form generalInfo_form hidden'
+          ? 'form generalInfo_form'
+          : 'form generalInfo_form hidden',
     });
   }
 
@@ -68,12 +71,16 @@ export default class GeneralInfo extends Component {
             <img src={emailIcon} alt="email icon" /> {this.state.info.email}
           </p>
         </div>
-        <button className="edit_btn" onClick={this.setFormDisplay}>
+        <EditBtn formDisplayHandler={this.setFormDisplay} />
+        {/* <button className="edit_btn" onClick={this.setFormDisplay}>
           Edit
-        </button>
+        </button> */}
 
-        <form className={this.state.formClassName}>
-          <p className="form_title">Edit General info</p>
+        <Form
+          className={this.state.formClassName}
+          title="Edit General Info"
+          formDisplayHandler={this.setFormDisplay}
+        >
           <label htmlFor="nameInput">
             Name:
             <input
@@ -101,10 +108,7 @@ export default class GeneralInfo extends Component {
               onChange={(e) => this.setEmailInput(e.target.value)}
             />
           </label>
-          <button type="button" onClick={this.setFormDisplay}>
-            Close
-          </button>
-        </form>
+        </Form>
       </div>
     );
   }
