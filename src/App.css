@@ -114,7 +114,7 @@ h1 {
   margin-left: var(--list-left-margin);
 }
 
-.exp_info {
+.enrich_info {
   display: flex;
   gap: 8px;
 }

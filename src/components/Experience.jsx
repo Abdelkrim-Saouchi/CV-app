@@ -1,63 +1,77 @@
 import React, { Component } from 'react';
 import timeIcon from '../calendar-1196-svgrepo-com.svg';
 import locationIcon from '../location-pin-svgrepo-com.svg';
+import uniqid from 'uniqid';
+import Enrichment from './Enrichment';
+
 export default class Experience extends Component {
+  constructor() {
+    super();
+    this.state = {
+      career: [
+        {
+          id: uniqid(),
+          pathName: 'Nice Job',
+          place: 'Super Company',
+          period: '2015-2018',
+          location: 'Lorem, ipsum.',
+          tasks: [
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+            },
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
+            },
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            },
+          ],
+        },
+        {
+          id: uniqid(),
+          pathName: 'Very Good Job',
+          place: 'Very Good Company',
+          period: '2018-presence',
+          location: 'Lorem, ipsum.',
+          tasks: [
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+            },
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
+            },
+            {
+              id: uniqid(),
+              taskText:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            },
+          ],
+        },
+      ],
+    };
+  }
   render() {
-    return (
-      <div className="Experience">
-        <div className="exp one">
-          <h2>
-            <div className="job">Nice job</div>
-            <div className="company">Super Company</div>
-          </h2>
-          <div className="exp_info">
-            <div className="period">
-              <img src={timeIcon} alt="period icon" />
-              2015-2018
-            </div>
-            <div className="location">
-              <img src={locationIcon} alt="location icon" /> Lorem, ipsum.
-            </div>
+    const { career } = this.state;
+    const ExperienceContent = career.map((job) => {
+      return (
+        <Enrichment path={job} timeIcon={timeIcon} key={job.id}>
+          <div className="location">
+            <img src={locationIcon} alt="location icon" />
+            {job.location}
           </div>
-          <ul>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo,
-              beatae.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui
-              suscipit molestiae nisi.
-            </li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          </ul>
-        </div>
-        <div className="exp two">
-          <h2>
-            <div className="job">Very Good job</div>
-            <div className="company">Very Good Company</div>
-          </h2>
-          <div className="exp_info">
-            <div className="period">
-              <img src={timeIcon} alt="period icon" />
-              2018-presence
-            </div>
-            <div className="location">
-              <img src={locationIcon} alt="location icon" /> Lorem, ipsum.
-            </div>
-          </div>
-          <ul>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo,
-              beatae.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui
-              suscipit molestiae nisi.
-            </li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          </ul>
-        </div>
-      </div>
-    );
+        </Enrichment>
+      );
+    });
+    return <div className="Experience">{ExperienceContent}</div>;
   }
 }
