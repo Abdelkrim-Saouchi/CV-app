@@ -158,6 +158,11 @@ h1 {
   gap: 12px;
 }
 
+.experience_form {
+  height: 600px;
+  overflow-y: scroll;
+}
+
 .experience_form label {
   height: 60px;
   flex-direction: column;
@@ -182,6 +187,17 @@ h1 {
 
 .form button:is(:hover, :focus) {
   opacity: 0.7;
+}
+
+.job_container {
+  position: relative;
+}
+
+#delete_job,
+#add_job {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 h2 {
