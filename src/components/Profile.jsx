@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
-import deleteIcon from '../delete-2-svgrepo-com.svg';
-import addIcon from '../add-plus-square-svgrepo-com.svg';
+import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
+import addIcon from '../assets/add-plus-square-svgrepo-com.svg';
 import Form from './Form';
 import EditBtn from './EditBtn';
 

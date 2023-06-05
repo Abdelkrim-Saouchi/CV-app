@@ -2,7 +2,6 @@
 /* eslint-disable no-fallthrough */
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
-
 import Expertise from './Expertise';
 
 export default class Experience extends Component {

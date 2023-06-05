@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // https://www.pngitem.com/middle/hxRbRT_profile-icon-png-default-profile-picture-png-transparent/
-import profileImg from '../profileImg.png';
+import profileImg from '../assets/profileImg.png';
 import EditBtn from './EditBtn';
 import Form from './Form';
 

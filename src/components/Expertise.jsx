@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import timeIcon from '../calendar-1196-svgrepo-com.svg';
-import locationIcon from '../location-pin-svgrepo-com.svg';
+import timeIcon from '../assets/calendar-1196-svgrepo-com.svg';
+import locationIcon from '../assets/location-pin-svgrepo-com.svg';
 import Enrichment from './Enrichment';
 import EditBtn from './EditBtn';
 import Form from './Form';
-import deleteIcon from '../delete-2-svgrepo-com.svg';
-import addIcon from '../add-plus-square-svgrepo-com.svg';
+import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
+import addIcon from '../assets/add-plus-square-svgrepo-com.svg';
 
 export default class Expertise extends Component {
   render() {

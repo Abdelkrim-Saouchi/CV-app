@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import phoneIcon from '../phone-rotary-svgrepo-com.svg';
-import emailIcon from '../email-svgrepo-com.svg';
+import phoneIcon from '../assets/phone-rotary-svgrepo-com.svg';
+import emailIcon from '../assets/email-svgrepo-com.svg';
 import Form from './Form';
 import EditBtn from './EditBtn';
 
