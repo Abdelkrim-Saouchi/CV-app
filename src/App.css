@@ -158,12 +158,14 @@ h1 {
   gap: 12px;
 }
 
-.experience_form {
+.experience_form,
+.Expertise_form {
   height: 600px;
   overflow-y: scroll;
 }
 
-.experience_form label {
+.experience_form label,
+.Expertise_form label {
   height: 60px;
   flex-direction: column;
   gap: 2px;
@@ -189,12 +191,15 @@ h1 {
   opacity: 0.7;
 }
 
+.knowledge_container,
 .job_container {
   position: relative;
 }
 
 #delete_job,
-#add_job {
+#add_job,
+#delete_knowledge,
+#add_knowledge {
   position: absolute;
   top: 0;
   right: 0;
