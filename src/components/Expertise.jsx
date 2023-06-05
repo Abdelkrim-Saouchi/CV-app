@@ -1,8 +1,6 @@
-/* eslint-disable default-case */
 import React, { Component } from 'react';
 import timeIcon from '../calendar-1196-svgrepo-com.svg';
 import locationIcon from '../location-pin-svgrepo-com.svg';
-import uniqid from 'uniqid';
 import Enrichment from './Enrichment';
 import EditBtn from './EditBtn';
 import Form from './Form';

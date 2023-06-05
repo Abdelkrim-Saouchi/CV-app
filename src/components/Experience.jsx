@@ -1,14 +1,8 @@
 /* eslint-disable default-case */
 /* eslint-disable no-fallthrough */
 import React, { Component } from 'react';
-import timeIcon from '../calendar-1196-svgrepo-com.svg';
-import locationIcon from '../location-pin-svgrepo-com.svg';
 import uniqid from 'uniqid';
-import Enrichment from './Enrichment';
-import EditBtn from './EditBtn';
-import Form from './Form';
-import deleteIcon from '../delete-2-svgrepo-com.svg';
-import addIcon from '../add-plus-square-svgrepo-com.svg';
+
 import Expertise from './Expertise';
 
 export default class Experience extends Component {
