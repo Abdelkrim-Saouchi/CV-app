@@ -74,12 +74,14 @@ export default class Experience extends Component {
       formClassName: 'form experience_form hidden',
     };
     this.setFormDisplay = this.setFormDisplay.bind(this);
-    this.changeJobInfoHandler = this.changeJobInfoHandler.bind(this);
-    this.changeJobTasksHandler = this.changeJobTasksHandler.bind(this);
+    this.changeKnowledgeInfoHandler =
+      this.changeKnowledgeInfoHandler.bind(this);
+    this.changeKnowledgeTasksHandler =
+      this.changeKnowledgeTasksHandler.bind(this);
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.deleteJob = this.deleteJob.bind(this);
-    this.addJob = this.addJob.bind(this);
+    this.deleteKnowledge = this.deleteKnowledge.bind(this);
+    this.addKnowledge = this.addKnowledge.bind(this);
   }
 
   setFormDisplay() {
@@ -91,50 +93,50 @@ export default class Experience extends Component {
     });
   }
 
-  changeJobInfoHandler(e) {
+  changeKnowledgeInfoHandler(e) {
     const targetProp = e.target.id;
-    const jobId = e.target.parentElement.parentElement.id;
+    const knowledgeId = e.target.parentElement.parentElement.id;
 
-    const newCareerList = this.state.career.map((job) => {
-      if (job.id === jobId) {
+    const newCareerList = this.state.career.map((knowledge) => {
+      if (knowledge.id === knowledgeId) {
         switch (targetProp) {
-          case 'job':
-            job.pathName = e.target.value;
+          case 'knowledge':
+            knowledge.pathName = e.target.value;
             break;
-          case 'company':
-            job.place = e.target.value;
+          case 'place':
+            knowledge.place = e.target.value;
             break;
           case 'from':
-            job.period.from = e.target.value;
+            knowledge.period.from = e.target.value;
             break;
           case 'to':
-            job.period.to = e.target.value;
+            knowledge.period.to = e.target.value;
             break;
           case 'location':
-            job.location = e.target.value;
+            knowledge.location = e.target.value;
             break;
         }
       }
-      return job;
+      return knowledge;
     });
     this.setState({
       career: [...newCareerList],
     });
   }
 
-  changeJobTasksHandler(e) {
+  changeKnowledgeTasksHandler(e) {
     const taskIndex = Number(e.target.id);
-    const jobId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((job) => {
-      if (job.id === jobId) {
-        job.tasks.map((task, index) => {
+    const knowledgeId = e.target.parentElement.parentElement.id;
+    const newCareerList = this.state.career.map((knowledge) => {
+      if (knowledge.id === knowledgeId) {
+        knowledge.tasks.map((task, index) => {
           if (index === taskIndex) {
             task.taskText = e.target.value;
           }
           return task;
         });
       }
-      return job;
+      return knowledge;
     });
 
     this.setState({
@@ -145,12 +147,15 @@ export default class Experience extends Component {
   addTask(e) {
     e.preventDefault();
     const newTaskText = e.target.previousSibling.value;
-    const jobId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((job) => {
-      if (job.id === jobId) {
-        job.tasks = [...job.tasks, { id: uniqid(), taskText: newTaskText }];
+    const knowledgeId = e.target.parentElement.parentElement.id;
+    const newCareerList = this.state.career.map((knowledge) => {
+      if (knowledge.id === knowledgeId) {
+        knowledge.tasks = [
+          ...knowledge.tasks,
+          { id: uniqid(), taskText: newTaskText },
+        ];
       }
-      return job;
+      return knowledge;
     });
 
     this.setState({
@@ -161,12 +166,14 @@ export default class Experience extends Component {
 
   deleteTask(e) {
     const targetIndex = Number(e.target.previousSibling.id);
-    const jobId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((job) => {
-      if (job.id === jobId) {
-        job.tasks = job.tasks.filter((item, index) => index !== targetIndex);
+    const knowledgeId = e.target.parentElement.parentElement.id;
+    const newCareerList = this.state.career.map((knowledge) => {
+      if (knowledge.id === knowledgeId) {
+        knowledge.tasks = knowledge.tasks.filter(
+          (item, index) => index !== targetIndex
+        );
       }
-      return job;
+      return knowledge;
     });
 
     this.setState({
@@ -174,29 +181,32 @@ export default class Experience extends Component {
     });
   }
 
-  deleteJob(e) {
-    const jobId = e.target.parentElement.id;
-    const newCareerList = this.state.career.filter((job) => job.id !== jobId);
+  deleteKnowledge(e) {
+    const knowledgeId = e.target.parentElement.id;
+    const newCareerList = this.state.career.filter(
+      (knowledge) => knowledge.id !== knowledgeId
+    );
+
     this.setState({
-      career: newCareerList,
+      career: [...newCareerList],
     });
   }
 
-  addJob(e) {
+  addKnowledge(e) {
     const parent = e.target.parentElement;
-    let job = parent.querySelector('#job');
-    let company = parent.querySelector('#company');
-    let from = parent.querySelector('#from');
-    let to = parent.querySelector('#to');
-    let location = parent.querySelector('#location');
+    const knowledge = parent.querySelector('#knowledge');
+    const place = parent.querySelector('#place');
+    const from = parent.querySelector('#from');
+    const to = parent.querySelector('#to');
+    const location = parent.querySelector('#location');
 
     this.setState({
       career: [
         ...this.state.career,
         {
           id: uniqid(),
-          pathName: job.value,
-          place: company.value,
+          pathName: knowledge.value,
+          place: place.value,
           period: { from: from.value, to: to.value },
           location: location.value,
           tasks: [],
@@ -204,145 +214,29 @@ export default class Experience extends Component {
       ],
     });
 
-    job.value = '';
-    company.value = '';
+    knowledge.value = '';
+    place.value = '';
     from.value = '';
     to.value = '';
     location.value = '';
   }
 
   render() {
-    const { career } = this.state;
-
-    const ExperienceContent = career.map((job) => {
-      return (
-        <Enrichment path={job} timeIcon={timeIcon} key={job.id}>
-          <div className="location">
-            <img src={locationIcon} alt="location icon" />
-            {job.location}
-          </div>
-        </Enrichment>
-      );
-    });
-
-    const jobContent = career.map((job) => {
-      return (
-        <div key={job.id} id={job.id} className="job_container">
-          <img
-            src={deleteIcon}
-            id="delete_job"
-            alt="delete job icon"
-            onClick={this.deleteJob}
-          />
-          <label htmlFor="job">
-            Job:
-            <input
-              type="text"
-              id="job"
-              value={job.pathName}
-              onChange={this.changeJobInfoHandler}
-            />
-          </label>
-          <label htmlFor="company">
-            Company:
-            <input
-              type="text"
-              id="company"
-              value={job.place}
-              onChange={this.changeJobInfoHandler}
-            />
-          </label>
-          <label htmlFor="from">
-            From:
-            <input
-              type="text"
-              id="from"
-              value={job.period.from}
-              onChange={this.changeJobInfoHandler}
-            />
-          </label>
-          <label htmlFor="to">
-            To:
-            <input
-              type="text"
-              id="to"
-              value={job.period.to}
-              onChange={this.changeJobInfoHandler}
-            />
-          </label>
-          <label htmlFor="location">
-            Location:
-            <input
-              type="text"
-              id="location"
-              value={job.location}
-              onChange={this.changeJobInfoHandler}
-            />
-          </label>
-          <p>tasks:</p>
-          {job.tasks.map((task, index) => {
-            return (
-              <div key={task.id} className="input_container">
-                <input
-                  id={index}
-                  value={task.taskText}
-                  onChange={this.changeJobTasksHandler}
-                />
-                <img
-                  src={deleteIcon}
-                  alt="delete icon"
-                  onClick={this.deleteTask}
-                />
-              </div>
-            );
-          })}
-          <div className="input_container">
-            <input id="add_input" />
-            <img src={addIcon} alt="add icon" onClick={this.addTask} />
-          </div>
-        </div>
-      );
-    });
-
     return (
       <div className="Experience">
-        {ExperienceContent}
-        <EditBtn formDisplayHandler={this.setFormDisplay} />
-        <Form
-          title="Edit Experience"
-          className={this.state.formClassName}
-          formDisplayHandler={this.setFormDisplay}
-        >
-          {jobContent}
-          <div className="job_container">
-            <img
-              src={addIcon}
-              id="add_job"
-              alt="add job icon"
-              onClick={this.addJob}
-            />
-            <label htmlFor="job">
-              Job:
-              <input type="text" id="job" />
-            </label>
-            <label htmlFor="company">
-              Company:
-              <input type="text" id="company" />
-            </label>
-            <label htmlFor="from">
-              From:
-              <input type="text" id="from" />
-            </label>
-            <label htmlFor="to">
-              To:
-              <input type="text" id="to" />
-            </label>
-            <label htmlFor="location">
-              Location:
-              <input type="text" id="location" />
-            </label>
-          </div>
-        </Form>
+        <Expertise
+          handleFormDisplay={this.setFormDisplay}
+          changeKnowledgeInfoHandler={this.changeKnowledgeInfoHandler}
+          changeKnowledgeTasksHandler={this.changeKnowledgeTasksHandler}
+          addTask={this.addTask}
+          deleteTask={this.deleteTask}
+          deleteKnowledge={this.deleteKnowledge}
+          addKnowledge={this.addKnowledge}
+          componentState={this.state}
+          knowledge="Job"
+          compTitle="Experience"
+          place="Company"
+        />
       </div>
     );
   }
