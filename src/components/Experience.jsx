@@ -11,8 +11,8 @@ import deleteIcon from '../delete-2-svgrepo-com.svg';
 import addIcon from '../add-plus-square-svgrepo-com.svg';
 
 export default class Experience extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       career: [
         {
@@ -78,6 +78,7 @@ export default class Experience extends Component {
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
+    this.addJob = this.addJob.bind(this);
   }
 
   setFormDisplay() {
@@ -180,6 +181,35 @@ export default class Experience extends Component {
     });
   }
 
+  addJob(e) {
+    const parent = e.target.parentElement;
+    let job = parent.querySelector('#job');
+    let company = parent.querySelector('#company');
+    let from = parent.querySelector('#from');
+    let to = parent.querySelector('#to');
+    let location = parent.querySelector('#location');
+
+    this.setState({
+      career: [
+        ...this.state.career,
+        {
+          id: uniqid(),
+          pathName: job.value,
+          place: company.value,
+          period: { from: from.value, to: to.value },
+          location: location.value,
+          tasks: [],
+        },
+      ],
+    });
+
+    job.value = '';
+    company.value = '';
+    from.value = '';
+    to.value = '';
+    location.value = '';
+  }
+
   render() {
     const { career } = this.state;
 
@@ -196,82 +226,80 @@ export default class Experience extends Component {
 
     const jobContent = career.map((job) => {
       return (
-        <>
-          <div key={job.id} id={job.id} className="job_container">
-            <img
-              src={deleteIcon}
-              id="delete_job"
-              alt="delete job icon"
-              onClick={this.deleteJob}
+        <div key={job.id} id={job.id} className="job_container">
+          <img
+            src={deleteIcon}
+            id="delete_job"
+            alt="delete job icon"
+            onClick={this.deleteJob}
+          />
+          <label htmlFor="job">
+            Job:
+            <input
+              type="text"
+              id="job"
+              value={job.pathName}
+              onChange={this.changeJobInfoHandler}
             />
-            <label htmlFor="job">
-              Job:
-              <input
-                type="text"
-                id="job"
-                value={job.pathName}
-                onChange={this.changeJobInfoHandler}
-              />
-            </label>
-            <label htmlFor="company">
-              Company:
-              <input
-                type="text"
-                id="company"
-                value={job.place}
-                onChange={this.changeJobInfoHandler}
-              />
-            </label>
-            <label htmlFor="from">
-              From:
-              <input
-                type="text"
-                id="from"
-                value={job.period.from}
-                onChange={this.changeJobInfoHandler}
-              />
-            </label>
-            <label htmlFor="to">
-              To:
-              <input
-                type="text"
-                id="to"
-                value={job.period.to}
-                onChange={this.changeJobInfoHandler}
-              />
-            </label>
-            <label htmlFor="location">
-              Location:
-              <input
-                type="text"
-                id="location"
-                value={job.location}
-                onChange={this.changeJobInfoHandler}
-              />
-            </label>
-            <p>tasks:</p>
-            {job.tasks.map((task, index) => {
-              return (
-                <div key={task.id} className="input_container">
-                  <input
-                    id={index}
-                    value={task.taskText}
-                    onChange={this.changeJobTasksHandler}
-                  />
-                  <img
-                    src={deleteIcon}
-                    alt="delete icon"
-                    onClick={this.deleteTask}
-                  />
-                </div>
-              );
-            })}
-            <div className="input_container">
-              <input id="add_input" />
-              <img src={addIcon} alt="add icon" onClick={this.addTask} />
-            </div>
+          </label>
+          <label htmlFor="company">
+            Company:
+            <input
+              type="text"
+              id="company"
+              value={job.place}
+              onChange={this.changeJobInfoHandler}
+            />
+          </label>
+          <label htmlFor="from">
+            From:
+            <input
+              type="text"
+              id="from"
+              value={job.period.from}
+              onChange={this.changeJobInfoHandler}
+            />
+          </label>
+          <label htmlFor="to">
+            To:
+            <input
+              type="text"
+              id="to"
+              value={job.period.to}
+              onChange={this.changeJobInfoHandler}
+            />
+          </label>
+          <label htmlFor="location">
+            Location:
+            <input
+              type="text"
+              id="location"
+              value={job.location}
+              onChange={this.changeJobInfoHandler}
+            />
+          </label>
+          <p>tasks:</p>
+          {job.tasks.map((task, index) => {
+            return (
+              <div key={task.id} className="input_container">
+                <input
+                  id={index}
+                  value={task.taskText}
+                  onChange={this.changeJobTasksHandler}
+                />
+                <img
+                  src={deleteIcon}
+                  alt="delete icon"
+                  onClick={this.deleteTask}
+                />
+              </div>
+            );
+          })}
+          <div className="input_container">
+            <input id="add_input" />
+            <img src={addIcon} alt="add icon" onClick={this.addTask} />
           </div>
-        </>
+        </div>
       );
     });
 
@@ -294,29 +322,24 @@ export default class Experience extends Component {
             />
             <label htmlFor="job">
               Job:
-              <input type="text" id="job" value="" />
+              <input type="text" id="job" />
             </label>
             <label htmlFor="company">
               Company:
-              <input type="text" id="company" value="" />
+              <input type="text" id="company" />
             </label>
             <label htmlFor="from">
               From:
-              <input type="text" id="from" value="" />
+              <input type="text" id="from" />
             </label>
             <label htmlFor="to">
               To:
-              <input type="text" id="to" value="" />
+              <input type="text" id="to" />
             </label>
             <label htmlFor="location">
               Location:
-              <input type="text" id="location" value="" />
+              <input type="text" id="location" />
             </label>
-            <p>tasks:</p>
-            <div className="input_container">
-              <input id="add_input" />
-              <img src={addIcon} alt="add icon" onClick={this.addTask} />
-            </div>
           </div>
         </Form>
       </div>
