@@ -42,10 +42,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .Photo img {
   width: 80%;
+  height: 70%;
   border-radius: 50%;
   border: 5px solid var(--white);
   margin-block: 16px;
