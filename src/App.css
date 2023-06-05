@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -11,7 +13,7 @@
   --cyan: hsl(166, 86%, 51%);
   --white: white;
   --gray: gray;
-  --padding-left-right: 32px;
+  --padding-left-right: 38px;
   --padding-block: 16px;
   --list-left-margin: 16px;
 }
@@ -19,6 +21,7 @@
 body {
   display: flex;
   justify-content: center;
+  font-family: 'Lato';
 }
 
 .App {
@@ -114,6 +117,7 @@ h1 {
 .Experience ul,
 .Education ul {
   margin-left: var(--list-left-margin);
+  opacity: 0.8;
 }
 
 .enrich_info {
@@ -125,6 +129,7 @@ h1 {
 .location {
   display: flex;
   align-items: center;
+  opacity: 0.8;
 }
 
 .edit_btn {
@@ -135,7 +140,7 @@ h1 {
   background-color: var(--dark);
   color: var(--cyan);
   padding: 4px 8px;
-  margin-right: 4px;
+  margin-inline: 4px;
   border: 0;
   outline: transparent;
   border-radius: 12px;
@@ -223,6 +228,16 @@ h1 {
 h2 {
   line-height: 1;
   margin-bottom: 10px;
+}
+
+.organization {
+  font-style: italic;
+}
+
+.NavSection h2 {
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
 .Experience img,

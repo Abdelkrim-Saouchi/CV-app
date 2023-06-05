@@ -12,55 +12,51 @@ export default class Experience extends Component {
       career: [
         {
           id: uniqid(),
-          pathName: 'Nice Job',
-          place: 'Super Company',
+          pathName: 'Doctoral Researcher',
+          place: 'CEITEC-Central European Institute of Technology',
           period: {
-            from: '2015',
-            to: '2018',
+            from: '2021',
+            to: 'presence',
           },
-          location: 'Lorem, ipsum.',
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+                'Error-check and validation of structural and publication data with goal of contributing to thte quality of a molecular database',
             },
             {
               id: uniqid(),
-              taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
+              taskText: 'Teaching: Introduction to programming in Python',
             },
             {
               id: uniqid(),
-              taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+              taskText: 'Mentoring younger bioinformatics students',
             },
           ],
         },
         {
           id: uniqid(),
-          pathName: 'Very Good Job',
-          place: 'Very Good Company',
+          pathName: 'Laboratory Technician',
+          place: 'Czech Academy of Science',
           period: {
             from: '2018',
-            to: 'presence',
+            to: '2019',
           },
-          location: 'Lorem, ipsum.',
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+                'Collecting and preparing samples for a biological library',
             },
             {
               id: uniqid(),
-              taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
+              taskText: 'Working with bioinformatics tools',
             },
             {
               id: uniqid(),
-              taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+              taskText: 'Teaching students new laboratory techniques',
             },
           ],
         },

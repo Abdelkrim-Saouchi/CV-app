@@ -80,7 +80,7 @@ export default class Expertise extends Component {
               onChange={this.props.changeKnowledgeInfoHandler}
             />
           </label>
-          <p>tasks:</p>
+          <p>Skills:</p>
           {knowledge.tasks.map((task, index) => {
             return (
               <div key={task.id} className="input_container">

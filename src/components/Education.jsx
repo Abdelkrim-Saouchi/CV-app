@@ -9,53 +9,70 @@ export default class Education extends Component {
       career: [
         {
           id: uniqid(),
-          pathName: 'Doctor Degree',
-          place: 'Super University',
+          pathName: "Bioinformatics(Current study) | Doctor's Degree",
+          place: 'MUNI',
           period: {
-            from: '2010',
-            to: '2015',
+            from: '2021',
+            to: 'presence',
           },
           tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+                'Exploring quality trends of biomolecular structures and ligand factor relationships in the Protein Data Bank database',
             },
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
-            },
-            {
-              id: uniqid(),
-              taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                'Member of Biological Data Management and Analysis Core Facility',
             },
           ],
         },
         {
           id: uniqid(),
-          pathName: 'Master Degree',
-          place: 'Very Good University',
+          pathName: "Bioinformatics | Bachelor's degree",
+          place: 'MUNI',
           period: {
-            from: '2005',
-            to: '2010',
+            from: '2019',
+            to: '2022',
           },
           tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, beatae.',
+                'Thesis: Validation of ring conformations in polycyclic molecules',
             },
+          ],
+        },
+        {
+          id: uniqid(),
+          pathName: "Genomics and Poteomics | Master's degree",
+          place: 'MUNI',
+          period: {
+            from: '2018',
+            to: '2021',
+          },
+          tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui suscipit molestiae nisi.',
+                'Thesis: Involvement of the catalytic telomerase subunit in gene expression regulation',
             },
+          ],
+        },
+        {
+          id: uniqid(),
+          pathName: "Biochemistry | Bachelor's degree",
+          place: 'MUNI',
+          period: {
+            from: '2014',
+            to: '2018',
+          },
+          tasks: [
             {
               id: uniqid(),
               taskText:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                'Thesis: The role of phosphorylation and dephosforylation in regulation of telomerase activity',
             },
           ],
         },

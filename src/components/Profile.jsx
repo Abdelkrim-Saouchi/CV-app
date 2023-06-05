@@ -12,15 +12,15 @@ export default class Profile extends Component {
       profileList: [
         {
           id: uniqid(),
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quos.',
+          text: 'Reseacher of structural and publication data resulting in the development of insights and contribution to the quality of a molecular database',
         },
         {
           id: uniqid(),
-          text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
+          text: 'Scientific consultant of validation software for structural data',
         },
         {
           id: uniqid(),
-          text: 'Lorm ipsum dolor sit amet consectetur, adipisicing elit. Dolor reiciendis aut incidunt porro adipisci delectus?',
+          text: 'Assistant of the lead teacher of an introduction to programming in Python for scientific students',
         },
       ],
       formClassName: 'Profile_form hidden',
