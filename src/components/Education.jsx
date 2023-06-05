@@ -60,6 +60,7 @@ export default class Education extends Component {
           ],
         },
       ],
+      formClassName: 'form education_form hidden',
     };
     this.setFormDisplay = this.setFormDisplay.bind(this);
     this.changeKnowledgeInfoHandler =
@@ -75,9 +76,9 @@ export default class Education extends Component {
   setFormDisplay() {
     this.setState({
       formClassName:
-        this.state.formClassName === 'form experience_form hidden'
-          ? 'form experience_form'
-          : 'form experience_form hidden',
+        this.state.formClassName === 'form education_form hidden'
+          ? 'form education_form'
+          : 'form education_form hidden',
     });
   }
 

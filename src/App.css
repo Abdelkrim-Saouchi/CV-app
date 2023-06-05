@@ -159,13 +159,15 @@ h1 {
 }
 
 .experience_form,
-.Expertise_form {
+.Expertise_form,
+.education_form {
   height: 600px;
   overflow-y: scroll;
 }
 
 .experience_form label,
-.Expertise_form label {
+.Expertise_form label,
+.education_form label {
   height: 60px;
   flex-direction: column;
   gap: 2px;
