@@ -15,6 +15,7 @@ export default class Education extends Component {
             from: '2021',
             to: 'presence',
           },
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
@@ -36,6 +37,7 @@ export default class Education extends Component {
             from: '2019',
             to: '2022',
           },
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
@@ -52,6 +54,7 @@ export default class Education extends Component {
             from: '2018',
             to: '2021',
           },
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
@@ -68,6 +71,7 @@ export default class Education extends Component {
             from: '2014',
             to: '2018',
           },
+          location: 'BRNO, CZECHIA',
           tasks: [
             {
               id: uniqid(),
@@ -125,6 +129,7 @@ export default class Education extends Component {
       }
       return knowledge;
     });
+    console.log('newCareerList:', newCareerList);
     this.setState({
       career: [...newCareerList],
     });
