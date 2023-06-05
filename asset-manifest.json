@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/CV-app/static/css/main.6f1a47cc.css",
+    "main.js": "/CV-app/static/js/main.866df169.js",
+    "static/media/profileImg.png": "/CV-app/static/media/profileImg.a44eb35e77b7f0224870.png",
+    "static/media/phone-rotary-svgrepo-com.svg": "/CV-app/static/media/phone-rotary-svgrepo-com.9b7b293189203d95642f7ac3d4309fae.svg",
+    "static/media/calendar-1196-svgrepo-com.svg": "/CV-app/static/media/calendar-1196-svgrepo-com.5fef21c743af673e87ced5caa69145f2.svg",
+    "static/media/add-plus-square-svgrepo-com.svg": "/CV-app/static/media/add-plus-square-svgrepo-com.7df28b35f9a2269d8d377d8d6714caba.svg",
+    "static/media/delete-2-svgrepo-com.svg": "/CV-app/static/media/delete-2-svgrepo-com.481374f475e38e84eafe3fa888f0e535.svg",
+    "static/media/location-pin-svgrepo-com.svg": "/CV-app/static/media/location-pin-svgrepo-com.aeabfb98dde90ece2d7a243a987dc7cc.svg",
+    "index.html": "/CV-app/index.html",
+    "static/media/email-svgrepo-com.svg": "/CV-app/static/media/email-svgrepo-com.2b324a5ac263811b87a0e0b71ffcf1e1.svg",
+    "main.6f1a47cc.css.map": "/CV-app/static/css/main.6f1a47cc.css.map",
+    "main.866df169.js.map": "/CV-app/static/js/main.866df169.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f1a47cc.css",
+    "static/js/main.866df169.js"
+  ]
+}
