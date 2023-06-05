@@ -179,8 +179,15 @@ h1 {
 .experience_form,
 .Expertise_form,
 .education_form {
+  top: 0;
+  transform: translateX(70%);
   height: 600px;
   overflow-y: scroll;
+}
+
+.education_form {
+  bottom: 0;
+  transform: translate(70%, -25%);
 }
 
 .experience_form label,
