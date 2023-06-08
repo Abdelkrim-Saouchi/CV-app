@@ -1,56 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // https://www.pngitem.com/middle/hxRbRT_profile-icon-png-default-profile-picture-png-transparent/
 import profileImg from '../assets/profileImg.png';
 import EditBtn from './EditBtn';
 import Form from './Form';
 
-export default class Photo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imgURL: profileImg,
-      formClassName: 'form Photo_form hidden',
-    };
-    this.setFormDisplay = this.setFormDisplay.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-  }
+const Photo = () => {
+  const [imgUrl, setImgUrl] = useState(profileImg);
+  const [edit, setEdit] = useState(false);
 
-  setFormDisplay() {
-    this.setState({
-      formClassName:
-        this.state.formClassName === 'form Photo_form hidden'
-          ? 'form Photo_form'
-          : 'form Photo_form hidden',
-    });
-  }
+  const setFormDisplay = () => {
+    if (edit) {
+      setEdit(false);
+    } else {
+      setEdit(true);
+    }
+  };
 
-  submitHandler(e) {
+  const submitHandler = (e) => {
     e.preventDefault();
     const form = e.target.parentElement;
     const inputValue = form.querySelector('#image_url').value;
-    console.log(inputValue);
-    this.setState({
-      imgURL: inputValue,
-    });
-  }
+    setImgUrl(inputValue);
+  };
 
-  render() {
-    return (
-      <div className="Photo">
-        <img src={this.state.imgURL} alt="personal img" />
-        <EditBtn formDisplayHandler={this.setFormDisplay} />
-        <Form
-          className={this.state.formClassName}
-          title="Edit Photo"
-          formDisplayHandler={this.setFormDisplay}
-        >
+  return (
+    <div className="Photo">
+      <img src={imgUrl} alt="personal img" />
+      <EditBtn formDisplayHandler={setFormDisplay} />
+      {edit && (
+        <Form title="Edit Photo" formDisplayHandler={setFormDisplay}>
           <label htmlFor="url">Image URL:</label>
           <input type="text" id="image_url" />
-          <button type="submit" onClick={this.submitHandler}>
+          <button type="submit" onClick={submitHandler}>
             Submit
           </button>
         </Form>
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
+
+export default Photo;
