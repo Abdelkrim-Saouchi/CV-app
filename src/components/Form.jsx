@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Form extends Component {
-  render() {
-    const { title, children, formDisplayHandler } = this.props;
-    return (
-      <form className={this.props.className}>
-        <p className="form_title">{title}</p>
-        {children}
-        <button type="button" onClick={formDisplayHandler}>
-          Close
-        </button>
-      </form>
-    );
-  }
-}
+const Form = ({ title, children, className, formDisplayHandler }) => {
+  return (
+    <form className={className}>
+      <p className="form_title">{title}</p>
+      {children}
+      <button type="button" onClick={formDisplayHandler}>
+        Close
+      </button>
+    </form>
+  );
+};
+
+export default Form;
