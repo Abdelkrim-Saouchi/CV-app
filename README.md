@@ -9,6 +9,7 @@ small project from 'The Odin Project' Curriculum.
 3. Heavy use of props and state of React component.
 4. Events handlers in React with buttons, form and input elements.
 5. Conditional rendering.
+6. Functional Components and useState()
 
 ### demo
 
