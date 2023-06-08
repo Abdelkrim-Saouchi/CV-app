@@ -8,7 +8,9 @@ import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
 import addIcon from '../assets/add-plus-square-svgrepo-com.svg';
 
 const Expertise = ({
-  componentState,
+  career,
+  edit,
+  parentFormClassName,
   deleteKnowledge,
   changeKnowledgeInfoHandler,
   changeKnowledgeTasksHandler,
@@ -20,7 +22,6 @@ const Expertise = ({
   knowledge,
   place,
 }) => {
-  const { career } = componentState;
   const expertiseContent = career.map((knowledge) => {
     return (
       <Enrichment path={knowledge} timeIcon={timeIcon} key={knowledge.id}>
@@ -111,41 +112,43 @@ const Expertise = ({
     <>
       {expertiseContent}
       <EditBtn formDisplayHandler={handleFormDisplay} />
-      <Form
-        title={`Edit ${compTitle}`}
-        className={componentState.formClassName}
-        formDisplayHandler={handleFormDisplay}
-      >
-        {knowledgeContent}
-        <div className="knowledge_container">
-          <img
-            src={addIcon}
-            id="add_knowledge"
-            alt="add knowledge icon"
-            onClick={addKnowledge}
-          />
-          <label htmlFor="knowledge">
-            {knowledge}
-            <input type="text" id="knowledge" />
-          </label>
-          <label htmlFor="place">
-            {place}:
-            <input type="text" id="place" />
-          </label>
-          <label htmlFor="from">
-            From:
-            <input type="text" id="from" />
-          </label>
-          <label htmlFor="to">
-            To:
-            <input type="text" id="to" />
-          </label>
-          <label htmlFor="location">
-            Location:
-            <input type="text" id="location" />
-          </label>
-        </div>
-      </Form>
+      {edit && (
+        <Form
+          title={`Edit ${compTitle}`}
+          className={parentFormClassName}
+          formDisplayHandler={handleFormDisplay}
+        >
+          {knowledgeContent}
+          <div className="knowledge_container">
+            <img
+              src={addIcon}
+              id="add_knowledge"
+              alt="add knowledge icon"
+              onClick={addKnowledge}
+            />
+            <label htmlFor="knowledge">
+              {knowledge}
+              <input type="text" id="knowledge" />
+            </label>
+            <label htmlFor="place">
+              {place}:
+              <input type="text" id="place" />
+            </label>
+            <label htmlFor="from">
+              From:
+              <input type="text" id="from" />
+            </label>
+            <label htmlFor="to">
+              To:
+              <input type="text" id="to" />
+            </label>
+            <label htmlFor="location">
+              Location:
+              <input type="text" id="location" />
+            </label>
+          </div>
+        </Form>
+      )}
     </>
   );
 };

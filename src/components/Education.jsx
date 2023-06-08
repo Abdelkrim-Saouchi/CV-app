@@ -1,113 +1,97 @@
-import React, { Component } from 'react';
+/* eslint-disable default-case */
+import React, { useState } from 'react';
 import Expertise from './Expertise';
 import uniqid from 'uniqid';
 
-export default class Education extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      career: [
-        {
-          id: uniqid(),
-          pathName: "Bioinformatics(Current study) | Doctor's Degree",
-          place: 'MUNI',
-          period: {
-            from: '2021',
-            to: 'presence',
-          },
-          location: 'BRNO, CZECHIA',
-          tasks: [
-            {
-              id: uniqid(),
-              taskText:
-                'Exploring quality trends of biomolecular structures and ligand factor relationships in the Protein Data Bank database',
-            },
-            {
-              id: uniqid(),
-              taskText:
-                'Member of Biological Data Management and Analysis Core Facility',
-            },
-          ],
-        },
-        {
-          id: uniqid(),
-          pathName: "Bioinformatics | Bachelor's degree",
-          place: 'MUNI',
-          period: {
-            from: '2019',
-            to: '2022',
-          },
-          location: 'BRNO, CZECHIA',
-          tasks: [
-            {
-              id: uniqid(),
-              taskText:
-                'Thesis: Validation of ring conformations in polycyclic molecules',
-            },
-          ],
-        },
-        {
-          id: uniqid(),
-          pathName: "Genomics and Poteomics | Master's degree",
-          place: 'MUNI',
-          period: {
-            from: '2018',
-            to: '2021',
-          },
-          location: 'BRNO, CZECHIA',
-          tasks: [
-            {
-              id: uniqid(),
-              taskText:
-                'Thesis: Involvement of the catalytic telomerase subunit in gene expression regulation',
-            },
-          ],
-        },
-        {
-          id: uniqid(),
-          pathName: "Biochemistry | Bachelor's degree",
-          place: 'MUNI',
-          period: {
-            from: '2014',
-            to: '2018',
-          },
-          location: 'BRNO, CZECHIA',
-          tasks: [
-            {
-              id: uniqid(),
-              taskText:
-                'Thesis: The role of phosphorylation and dephosforylation in regulation of telomerase activity',
-            },
-          ],
-        },
-      ],
-      formClassName: 'form education_form hidden',
-    };
-    this.setFormDisplay = this.setFormDisplay.bind(this);
-    this.changeKnowledgeInfoHandler =
-      this.changeKnowledgeInfoHandler.bind(this);
-    this.changeKnowledgeTasksHandler =
-      this.changeKnowledgeTasksHandler.bind(this);
-    this.addTask = this.addTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
-    this.deleteKnowledge = this.deleteKnowledge.bind(this);
-    this.addKnowledge = this.addKnowledge.bind(this);
-  }
+const initialCareer = [
+  {
+    id: uniqid(),
+    pathName: "Bioinformatics(Current study) | Doctor's Degree",
+    place: 'MUNI',
+    period: {
+      from: '2021',
+      to: 'presence',
+    },
+    location: 'BRNO, CZECHIA',
+    tasks: [
+      {
+        id: uniqid(),
+        taskText:
+          'Exploring quality trends of biomolecular structures and ligand factor relationships in the Protein Data Bank database',
+      },
+      {
+        id: uniqid(),
+        taskText:
+          'Member of Biological Data Management and Analysis Core Facility',
+      },
+    ],
+  },
+  {
+    id: uniqid(),
+    pathName: "Bioinformatics | Bachelor's degree",
+    place: 'MUNI',
+    period: {
+      from: '2019',
+      to: '2022',
+    },
+    location: 'BRNO, CZECHIA',
+    tasks: [
+      {
+        id: uniqid(),
+        taskText:
+          'Thesis: Validation of ring conformations in polycyclic molecules',
+      },
+    ],
+  },
+  {
+    id: uniqid(),
+    pathName: "Genomics and Poteomics | Master's degree",
+    place: 'MUNI',
+    period: {
+      from: '2018',
+      to: '2021',
+    },
+    location: 'BRNO, CZECHIA',
+    tasks: [
+      {
+        id: uniqid(),
+        taskText:
+          'Thesis: Involvement of the catalytic telomerase subunit in gene expression regulation',
+      },
+    ],
+  },
+  {
+    id: uniqid(),
+    pathName: "Biochemistry | Bachelor's degree",
+    place: 'MUNI',
+    period: {
+      from: '2014',
+      to: '2018',
+    },
+    location: 'BRNO, CZECHIA',
+    tasks: [
+      {
+        id: uniqid(),
+        taskText:
+          'Thesis: The role of phosphorylation and dephosforylation in regulation of telomerase activity',
+      },
+    ],
+  },
+];
 
-  setFormDisplay() {
-    this.setState({
-      formClassName:
-        this.state.formClassName === 'form education_form hidden'
-          ? 'form education_form'
-          : 'form education_form hidden',
-    });
-  }
+const Education = () => {
+  const [career, setCareer] = useState(initialCareer);
+  const [edit, setEdit] = useState(false);
 
-  changeKnowledgeInfoHandler(e) {
+  const setFormDisplay = () => {
+    setEdit(!edit);
+  };
+
+  const changeKnowledgeInfoHandler = (e) => {
     const targetProp = e.target.id;
     const knowledgeId = e.target.parentElement.parentElement.id;
 
-    const newCareerList = this.state.career.map((knowledge) => {
+    const newCareerList = career.map((knowledge) => {
       if (knowledge.id === knowledgeId) {
         switch (targetProp) {
           case 'knowledge':
@@ -129,16 +113,13 @@ export default class Education extends Component {
       }
       return knowledge;
     });
-    console.log('newCareerList:', newCareerList);
-    this.setState({
-      career: [...newCareerList],
-    });
-  }
+    setCareer(newCareerList);
+  };
 
-  changeKnowledgeTasksHandler(e) {
+  const changeKnowledgeTasksHandler = (e) => {
     const taskIndex = Number(e.target.id);
     const knowledgeId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((knowledge) => {
+    const newCareerList = career.map((knowledge) => {
       if (knowledge.id === knowledgeId) {
         knowledge.tasks.map((task, index) => {
           if (index === taskIndex) {
@@ -149,17 +130,14 @@ export default class Education extends Component {
       }
       return knowledge;
     });
+    setCareer(newCareerList);
+  };
 
-    this.setState({
-      career: [...newCareerList],
-    });
-  }
-
-  addTask(e) {
+  const addTask = (e) => {
     e.preventDefault();
     const newTaskText = e.target.previousSibling.value;
     const knowledgeId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((knowledge) => {
+    const newCareerList = career.map((knowledge) => {
       if (knowledge.id === knowledgeId) {
         knowledge.tasks = [
           ...knowledge.tasks,
@@ -169,16 +147,14 @@ export default class Education extends Component {
       return knowledge;
     });
 
-    this.setState({
-      career: [...newCareerList],
-    });
+    setCareer(newCareerList);
     e.target.previousSibling.value = '';
-  }
+  };
 
-  deleteTask(e) {
+  const deleteTask = (e) => {
     const targetIndex = Number(e.target.previousSibling.id);
     const knowledgeId = e.target.parentElement.parentElement.id;
-    const newCareerList = this.state.career.map((knowledge) => {
+    const newCareerList = career.map((knowledge) => {
       if (knowledge.id === knowledgeId) {
         knowledge.tasks = knowledge.tasks.filter(
           (item, index) => index !== targetIndex
@@ -186,24 +162,18 @@ export default class Education extends Component {
       }
       return knowledge;
     });
+    setCareer(newCareerList);
+  };
 
-    this.setState({
-      career: [...newCareerList],
-    });
-  }
-
-  deleteKnowledge(e) {
+  const deleteKnowledge = (e) => {
     const knowledgeId = e.target.parentElement.id;
-    const newCareerList = this.state.career.filter(
+    const newCareerList = career.filter(
       (knowledge) => knowledge.id !== knowledgeId
     );
+    setCareer(newCareerList);
+  };
 
-    this.setState({
-      career: [...newCareerList],
-    });
-  }
-
-  addKnowledge(e) {
+  const addKnowledge = (e) => {
     const parent = e.target.parentElement;
     const knowledge = parent.querySelector('#knowledge');
     const place = parent.querySelector('#place');
@@ -211,44 +181,44 @@ export default class Education extends Component {
     const to = parent.querySelector('#to');
     const location = parent.querySelector('#location');
 
-    this.setState({
-      career: [
-        ...this.state.career,
-        {
-          id: uniqid(),
-          pathName: knowledge.value,
-          place: place.value,
-          period: { from: from.value, to: to.value },
-          location: location.value,
-          tasks: [],
-        },
-      ],
-    });
+    setCareer([
+      ...career,
+      {
+        id: uniqid(),
+        pathName: knowledge.value,
+        place: place.value,
+        period: { from: from.value, to: to.value },
+        location: location.value,
+        tasks: [],
+      },
+    ]);
 
     knowledge.value = '';
     place.value = '';
     from.value = '';
     to.value = '';
     location.value = '';
-  }
+  };
 
-  render() {
-    return (
-      <div className="Education">
-        <Expertise
-          handleFormDisplay={this.setFormDisplay}
-          changeKnowledgeInfoHandler={this.changeKnowledgeInfoHandler}
-          changeKnowledgeTasksHandler={this.changeKnowledgeTasksHandler}
-          addTask={this.addTask}
-          deleteTask={this.deleteTask}
-          deleteKnowledge={this.deleteKnowledge}
-          addKnowledge={this.addKnowledge}
-          componentState={this.state}
-          knowledge="Degree"
-          compTitle="Education"
-          place="University"
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="Education">
+      <Expertise
+        handleFormDisplay={setFormDisplay}
+        edit={edit}
+        parentFormClassName="education_form"
+        changeKnowledgeInfoHandler={changeKnowledgeInfoHandler}
+        changeKnowledgeTasksHandler={changeKnowledgeTasksHandler}
+        addTask={addTask}
+        deleteTask={deleteTask}
+        deleteKnowledge={deleteKnowledge}
+        addKnowledge={addKnowledge}
+        career={career}
+        knowledge="Degree"
+        compTitle="Education"
+        place="University"
+      />
+    </div>
+  );
+};
+
+export default Education;
