@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class EditBtn extends Component {
-  render() {
-    const { formDisplayHandler } = this.props;
-    return (
-      <button className="edit_btn" onClick={formDisplayHandler}>
-        Edit
-      </button>
-    );
-  }
-}
+const EditBtn = ({ formDisplayHandler }) => {
+  return (
+    <button className="edit_btn" onClick={formDisplayHandler}>
+      Edit
+    </button>
+  );
+};
+
+export default EditBtn;
