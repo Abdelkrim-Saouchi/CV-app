@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import profileImg from '../assets/profileImg.png';
 import EditBtn from './EditBtn';
 import Form from './Form';
+import { useShowEdit } from './useShowEdit';
 
 const Photo = () => {
   const [imgUrl, setImgUrl] = useState(profileImg);
   const [edit, setEdit] = useState(false);
+  const [showedEdit, showEdit, hideEdit] = useShowEdit();
 
   const setFormDisplay = () => {
     if (edit) {
@@ -24,9 +26,9 @@ const Photo = () => {
   };
 
   return (
-    <div className="Photo">
+    <div className="Photo" onMouseEnter={showEdit} onMouseLeave={hideEdit}>
       <img src={imgUrl} alt="personal img" />
-      <EditBtn formDisplayHandler={setFormDisplay} />
+      {showedEdit && <EditBtn formDisplayHandler={setFormDisplay} />}
       {edit && (
         <Form title="Edit Photo" formDisplayHandler={setFormDisplay}>
           <label htmlFor="url">Image URL:</label>

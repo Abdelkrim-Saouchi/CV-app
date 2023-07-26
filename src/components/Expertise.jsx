@@ -1,27 +1,33 @@
 import React from 'react';
-import timeIcon from '../assets/calendar-1196-svgrepo-com.svg';
-import locationIcon from '../assets/location-pin-svgrepo-com.svg';
-import Enrichment from './Enrichment';
-import EditBtn from './EditBtn';
-import Form from './Form';
-import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
 import addIcon from '../assets/add-plus-square-svgrepo-com.svg';
+import timeIcon from '../assets/calendar-1196-svgrepo-com.svg';
+import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
+import locationIcon from '../assets/location-pin-svgrepo-com.svg';
+import EditBtn from './EditBtn';
+import Enrichment from './Enrichment';
+import Form from './Form';
+import { useHandlers } from './useHandlers';
 
 const Expertise = ({
-  career,
-  edit,
+  initialCareer,
   parentFormClassName,
-  deleteKnowledge,
-  changeKnowledgeInfoHandler,
-  changeKnowledgeTasksHandler,
-  deleteTask,
-  addTask,
-  handleFormDisplay,
-  compTitle,
-  addKnowledge,
   knowledge,
+  compTitle,
   place,
+  showedEdit,
 }) => {
+  const {
+    career,
+    edit,
+    handleFormDisplay,
+    changeKnowledgeInfoHandler,
+    changeKnowledgeTasksHandler,
+    addTask,
+    deleteTask,
+    deleteKnowledge,
+    addKnowledge,
+  } = useHandlers(initialCareer);
+
   const expertiseContent = career.map((knowledge) => {
     return (
       <Enrichment path={knowledge} timeIcon={timeIcon} key={knowledge.id}>
@@ -111,7 +117,7 @@ const Expertise = ({
   return (
     <>
       {expertiseContent}
-      <EditBtn formDisplayHandler={handleFormDisplay} />
+      {showedEdit && <EditBtn formDisplayHandler={handleFormDisplay} />}
       {edit && (
         <Form
           title={`Edit ${compTitle}`}

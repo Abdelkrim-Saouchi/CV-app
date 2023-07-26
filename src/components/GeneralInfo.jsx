@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import phoneIcon from '../assets/phone-rotary-svgrepo-com.svg';
 import emailIcon from '../assets/email-svgrepo-com.svg';
-import Form from './Form';
+import phoneIcon from '../assets/phone-rotary-svgrepo-com.svg';
 import EditBtn from './EditBtn';
+import Form from './Form';
+import { useShowEdit } from './useShowEdit';
 
 const GeneralInfo = () => {
   const [name, setName] = useState('Your Name');
   const [phone, setPhone] = useState('124-333-200');
   const [email, setEmail] = useState('example@gmail.com');
   const [edit, setEdit] = useState(false);
+  const [showedEdit, showEdit, hideEdit] = useShowEdit();
 
   const setFormDisplay = () => {
     setEdit(!edit);
   };
 
   return (
-    <div className="GeneralInfo">
+    <div
+      className="GeneralInfo"
+      onMouseEnter={showEdit}
+      onMouseLeave={hideEdit}
+    >
       <h1>{name}</h1>
 
       <div className="info">
@@ -26,7 +32,7 @@ const GeneralInfo = () => {
           <img src={emailIcon} alt="email icon" /> {email}
         </p>
       </div>
-      <EditBtn formDisplayHandler={setFormDisplay} />
+      {showedEdit && <EditBtn formDisplayHandler={setFormDisplay} />}
       {edit && (
         <Form title="Edit General Info" formDisplayHandler={setFormDisplay}>
           <label htmlFor="nameInput">

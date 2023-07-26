@@ -1,8 +1,8 @@
 /* eslint-disable default-case */
 
-import Expertise from './Expertise';
 import uniqid from 'uniqid';
-import { useHandlers } from './useHandlers';
+import Expertise from './Expertise';
+import { useShowEdit } from './useShowEdit';
 
 const initialCareer = [
   {
@@ -81,34 +81,17 @@ const initialCareer = [
 ];
 
 const Education = () => {
-  const {
-    career,
-    edit,
-    setFormDisplay,
-    changeKnowledgeInfoHandler,
-    changeKnowledgeTasksHandler,
-    addTask,
-    deleteTask,
-    deleteKnowledge,
-    addKnowledge,
-  } = useHandlers(initialCareer);
+  const [showedEdit, showEdit, hideEdit] = useShowEdit();
 
   return (
-    <div className="Education">
+    <div className="Education" onMouseEnter={showEdit} onMouseLeave={hideEdit}>
       <Expertise
-        handleFormDisplay={setFormDisplay}
-        edit={edit}
+        initialCareer={initialCareer}
         parentFormClassName="education_form"
-        changeKnowledgeInfoHandler={changeKnowledgeInfoHandler}
-        changeKnowledgeTasksHandler={changeKnowledgeTasksHandler}
-        addTask={addTask}
-        deleteTask={deleteTask}
-        deleteKnowledge={deleteKnowledge}
-        addKnowledge={addKnowledge}
-        career={career}
         knowledge="Degree"
         compTitle="Education"
         place="University"
+        showedEdit={showedEdit}
       />
     </div>
   );

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
-import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
 import addIcon from '../assets/add-plus-square-svgrepo-com.svg';
-import Form from './Form';
+import deleteIcon from '../assets/delete-2-svgrepo-com.svg';
 import EditBtn from './EditBtn';
+import Form from './Form';
+import { useShowEdit } from './useShowEdit';
 
 const initialProfileList = [
   {
@@ -23,6 +24,7 @@ const initialProfileList = [
 const Profile = () => {
   const [profileList, setProfileList] = useState(initialProfileList);
   const [edit, setEdit] = useState(false);
+  const [showedEdit, showEdit, hideEdit] = useShowEdit();
 
   const setFormDisplay = () => {
     setEdit(!edit);
@@ -57,13 +59,13 @@ const Profile = () => {
   };
 
   return (
-    <div className="Profile">
+    <div className="Profile" onMouseEnter={showEdit} onMouseLeave={hideEdit}>
       <ul>
         {profileList.map((item) => (
           <li key={item.id}>{item.text}</li>
         ))}
       </ul>
-      <EditBtn formDisplayHandler={setFormDisplay} />
+      {showedEdit && <EditBtn formDisplayHandler={setFormDisplay} />}
       {edit && (
         <Form title="Edit Profile" formDisplayHandler={setFormDisplay}>
           {profileList.map((element, index) => {

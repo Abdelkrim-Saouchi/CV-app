@@ -127,7 +127,7 @@ const useHandlers = (initialCareer) => {
   return {
     career,
     edit,
-    setFormDisplay,
+    handleFormDisplay: setFormDisplay,
     changeKnowledgeInfoHandler,
     changeKnowledgeTasksHandler,
     addTask,

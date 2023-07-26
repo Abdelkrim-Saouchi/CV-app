@@ -1,6 +1,6 @@
 import uniqid from 'uniqid';
 import Expertise from './Expertise';
-import { useHandlers } from './useHandlers';
+import { useShowEdit } from './useShowEdit';
 
 const initialCareer = [
   {
@@ -55,34 +55,17 @@ const initialCareer = [
 ];
 
 const Experience = () => {
-  const {
-    career,
-    edit,
-    setFormDisplay,
-    changeKnowledgeInfoHandler,
-    changeKnowledgeTasksHandler,
-    addTask,
-    deleteTask,
-    deleteKnowledge,
-    addKnowledge,
-  } = useHandlers(initialCareer);
+  const [showedEdit, showEdit, hideEdit] = useShowEdit();
 
   return (
-    <div className="Experience">
+    <div className="Experience" onMouseEnter={showEdit} onMouseLeave={hideEdit}>
       <Expertise
-        handleFormDisplay={setFormDisplay}
-        edit={edit}
+        initialCareer={initialCareer}
         parentFormClassName="experience_form"
-        changeKnowledgeInfoHandler={changeKnowledgeInfoHandler}
-        changeKnowledgeTasksHandler={changeKnowledgeTasksHandler}
-        addTask={addTask}
-        deleteTask={deleteTask}
-        deleteKnowledge={deleteKnowledge}
-        addKnowledge={addKnowledge}
-        career={career}
         knowledge="Job"
         compTitle="Experience"
         place="Company"
+        showedEdit={showedEdit}
       />
     </div>
   );
