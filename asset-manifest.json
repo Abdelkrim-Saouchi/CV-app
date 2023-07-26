@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CV-app/static/css/main.6f1a47cc.css",
-    "main.js": "/CV-app/static/js/main.866df169.js",
+    "main.js": "/CV-app/static/js/main.d9834737.js",
     "static/media/profileImg.png": "/CV-app/static/media/profileImg.a44eb35e77b7f0224870.png",
     "static/media/phone-rotary-svgrepo-com.svg": "/CV-app/static/media/phone-rotary-svgrepo-com.9b7b293189203d95642f7ac3d4309fae.svg",
     "static/media/calendar-1196-svgrepo-com.svg": "/CV-app/static/media/calendar-1196-svgrepo-com.5fef21c743af673e87ced5caa69145f2.svg",
@@ -11,10 +11,10 @@
     "index.html": "/CV-app/index.html",
     "static/media/email-svgrepo-com.svg": "/CV-app/static/media/email-svgrepo-com.2b324a5ac263811b87a0e0b71ffcf1e1.svg",
     "main.6f1a47cc.css.map": "/CV-app/static/css/main.6f1a47cc.css.map",
-    "main.866df169.js.map": "/CV-app/static/js/main.866df169.js.map"
+    "main.d9834737.js.map": "/CV-app/static/js/main.d9834737.js.map"
   },
   "entrypoints": [
     "static/css/main.6f1a47cc.css",
-    "static/js/main.866df169.js"
+    "static/js/main.d9834737.js"
   ]
 }
